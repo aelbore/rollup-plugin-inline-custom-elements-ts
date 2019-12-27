@@ -21,7 +21,7 @@ const transpile = (filePath: string, source: string) => {
   return { code: outputText, map: sourceMapText }
 }
 
-export default function inlineTemplateTransform() {
+export function inlineTemplateTransform() {
   return {
     name: 'inlineTemplateTransform',    
     transform (code: string, id: string) {  

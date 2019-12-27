@@ -2,12 +2,15 @@ import * as ts from 'typescript'
 import * as path from 'path'
 import * as fs from 'fs'
 
-import * as sass from 'node-sass';
-
 function buildSass(content: string, srcFile: string): string {
   return srcFile.endsWith('.scss') 
-    ? sass.renderSync({ data: content, file: srcFile, outputStyle: 'compressed' }).css.toString() 
-    : content;
+    ? require('node-sass')
+        .renderSync({ 
+          data: content, 
+          file: srcFile, 
+          outputStyle: 'compressed' 
+        }).css.toString() 
+    : content
 }
 
 function createTemplate(filePath: string, property: ts.PropertyAssignment) {

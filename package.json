@@ -4,13 +4,20 @@
   "description": "Rollup plugin to inline templateUrl and styleUrl for custom-element-ts lib",
   "main": "inline-template-plugin.js",
   "scripts": {
-    "build": "ts-node tools/build.ts"
+    "postinstall": "yarn build && yarn link.loader",
+    "link.loader": "aria-fs link ./dist ./node_modules/rollup-plugin-inline-custom-elements-ts",
+    "build": "aria-build -d -i ./src/inline-template-plugin.ts --external typescript",
+    "build.demo": "aria-build -f es -c ./tools/hello-world.config.ts -i ./demo/hello-world.ts -o ./public"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aelbore/rollup-plugin-inline-custom-elements-ts.git"
   },
-  "keywords": [],
+  "keywords": [
+    "custom-elements",
+    "web-components",
+    "javascript"
+  ],
   "author": "Arjay Elbore",
   "license": "ISC",
   "bugs": {
@@ -18,21 +25,18 @@
   },
   "homepage": "https://github.com/aelbore/rollup-plugin-inline-custom-elements-ts#readme",
   "peerDependencies": {
-    "magic-string": "^0.25.2",
-    "node-sass": "^4.11.0",
-    "typescript": "^3.4.1"
+    "node-sass": ">= ^4.12.0 < ^4.13.0",
+    "typescript": ">= ^3.7.0 < ^3.7.4"
   },
   "typings": "inline-template-plugin.d.ts",
+  "dependencies": {
+    "magic-string": "^0.25.2"
+  },
   "devDependencies": {
-    "@types/node": "^11.12.2",
-    "@types/node-sass": "^4.11.0",
-    "aria-fs": "0.0.4",
-    "magic-string": "^0.25.2",
-    "node-sass": "^4.11.0",
-    "rollup": "^1.7.4",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-typescript2": "^0.20.1",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.4.1"
+    "@types/node": "^13.1.4",
+    "aria-build": "^0.0.23",
+    "custom-elements-ts": "^0.0.16",
+    "node-sass": "^4.13.0",
+    "typescript": "^3.7.4"
   }
 }
