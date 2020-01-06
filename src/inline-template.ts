@@ -3,14 +3,10 @@ import * as path from 'path'
 import * as fs from 'fs'
 
 function buildSass(content: string, srcFile: string): string {
-  return srcFile.endsWith('.scss') 
-    ? require('node-sass')
-        .renderSync({ 
-          data: content, 
-          file: srcFile, 
-          outputStyle: 'compressed' 
-        }).css.toString() 
-    : content
+  const nodeSassOptions = { data: content, file: srcFile, outputStyle: 'compressed' }
+  return srcFile.endsWith('.scss')
+      ? require('node-sass').renderSync(nodeSassOptions).css.toString()
+      : content;
 }
 
 function createTemplate(filePath: string, property: ts.PropertyAssignment) {
