@@ -39,7 +39,7 @@
     "aria-build": "^0.0.23",
     "custom-elements-ts": "^0.0.16",
     "express": "^4.17.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "typescript": "^3.7.4"
   }
 }
